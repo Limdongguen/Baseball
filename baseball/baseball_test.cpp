@@ -21,6 +21,7 @@ public:
 TEST_F(BaseBallFixture, ThrowExceptionWhenInvalidCase) {
 	assertIllegalArgument("12");
 	assertIllegalArgument("12s");
+	assertIllegalArgument("121");
 }
 
 int main() {
