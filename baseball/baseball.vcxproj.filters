@@ -24,6 +24,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include=".gitignore" />
   </ItemGroup>
 </Project>
