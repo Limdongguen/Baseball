@@ -12,9 +12,18 @@ class Baseball {
 public:
 	explicit Baseball(const string& answer) : answer{ answer } {};
 	GuessResult guess(const string& guessNumber) {
+		GuessResult result{ false, 0,0 };
+		auto answer_size = answer.size();
 		assertIllegalArgument(guessNumber);
 		if (answer == guessNumber) return { true,3,0 };
-		return { false,0,0 };
+		for (int i = 0; i < answer_size; i++) {
+			if (answer[i] == guessNumber[i]) 
+				result.strikes++;
+			else if (answer[i] == guessNumber[(i + 1) % answer_size] ||
+				answer[i] == guessNumber[(i + 2) % answer_size]) 
+				result.balls++;
+		}
+		return result;
 	}
 
 private:
