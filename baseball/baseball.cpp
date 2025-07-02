@@ -8,5 +8,8 @@ public:
 		if (string.length() != 3) {
 			throw length_error("Must be three letters.");
 		}
+		else {
+			throw invalid_argument("Must be number");
+		}
 	}
 };
