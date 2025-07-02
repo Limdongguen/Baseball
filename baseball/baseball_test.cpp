@@ -1,10 +1,11 @@
 #include <iostream>
 #include "baseball.cpp"
 #include "gmock/gmock.h"
+using namespace std;
 
-TEST(TS, TC1) {
-	Baseball baseball;
-	EXPECT_EQ(1, 1);	
+TEST(TS, ThrowExceptionWhenInputLengthIsUnmatched) {
+	Baseball game;
+	EXPECT_THROW(game.guess(string("12")), length_error);
 }
 
 int main() {
