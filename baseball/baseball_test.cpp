@@ -3,14 +3,24 @@
 #include "gmock/gmock.h"
 using namespace std;
 
-TEST(TS, ThrowExceptionWhenInputLengthIsUnmatched) {
+class BaseBallFixture : public testing::Test {
+public:
 	Baseball game;
-	EXPECT_THROW(game.guess(string("12")), length_error);
-}
+	void assertIllegalArgument(string guessNumber) {
+		try {
+			game.guess(guessNumber);
+			FAIL();
+		}
+		catch (const exception &e)
+		{
 
-TEST(TS, ThrowExceptionWhenInvalidChar) {
-	Baseball game;
-	EXPECT_THROW(game.guess(string("12s")), invalid_argument);
+		}
+	}
+};
+
+TEST_F(BaseBallFixture, ThrowExceptionWhenInvalidCase) {
+	assertIllegalArgument("12");
+	assertIllegalArgument("12s");
 }
 
 int main() {
