@@ -13,7 +13,8 @@ public:
 	explicit Baseball(const string& answer) : answer{ answer } {};
 	GuessResult guess(const string& guessNumber) {
 		assertIllegalArgument(guessNumber);
-		return { true,3,0 };
+		if (answer == guessNumber) return { true,3,0 };
+		return { false,0,0 };
 	}
 
 private:
